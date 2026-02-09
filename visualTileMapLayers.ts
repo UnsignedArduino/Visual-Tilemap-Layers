@@ -13,13 +13,13 @@ namespace VisualTileMapLayers {
                 (screen: Image, camera: scene.Camera) => {
                     const tileSize = this.tilemap.getTileImage(0).width;
 
-                    const topRow = Math.floor(camera.top / tileSize);
+                    const topRow = Math.floor(camera.drawOffsetY / tileSize);
                     const bottomRow = topRow + Math.ceil(scene.screenHeight() / tileSize) + 1;
-                    const leftCol = Math.floor(camera.left / tileSize);
+                    const leftCol = Math.floor(camera.drawOffsetX / tileSize);
                     const rightCol = leftCol + Math.ceil(scene.screenWidth() / tileSize) + 1;
 
-                    const topOffset = camera.top % tileSize;
-                    const leftOffset = camera.left % tileSize;
+                    const topOffset = camera.drawOffsetY % tileSize;
+                    const leftOffset = camera.drawOffsetX % tileSize;
 
                     for (let row = topRow; row < bottomRow; row++) {
                         for (let col = leftCol; col < rightCol; col++) {
